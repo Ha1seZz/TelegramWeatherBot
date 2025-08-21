@@ -91,13 +91,13 @@ TelegramWeatherBot/
   <img src="assets/demo.gif" alt="Weather Bot Demo"/>
   <br>
   <b>📌 The bot shows the current weather, saves your city and automatically send daily updates.</b>
-  <br>
+  <br><br>
 
-  <b>🔧 Commands:</b>
-  /start - Start the bot
-  &lt;city&gt; - Get the weather for a city
-  /mycity - Your city for weather forecast delivery
-  /setcity &lt;city&gt; - Set / Change the city for weather forecast delivery
+  <b>🔧 Commands:</b><br>
+  /start - Start the bot<br>
+  &lt;city&gt; - Get the weather for a city<br>
+  /mycity - Your city for weather forecast delivery<br>
+  /setcity &lt;city&gt; - Set / Change the city for weather forecast delivery<br>
 </p>
 
 * * *
