@@ -87,7 +87,11 @@ TelegramWeatherBot/
 
 ## 💡Examples
 
-![Telegram Bot Demo](assets/demo.gif)
+<p align="center">
+  <img src="demo.gif" alt="Demo" width="400" style="border-radius:10px;"/>
+  <br>
+  <b>📌 The bot shows the current weather, saves your city, and can automatically send daily updates.</b>
+</p>
 
 * * *
 
