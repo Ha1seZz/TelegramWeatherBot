@@ -20,35 +20,35 @@ All interactions are logged into JSON files.
 ```sh
 TelegramWeatherBot/
 │
-├── bot/                         # Core logic of the Telegram bot
-│   ├── __init__.py              # Marks the folder as a Python package
-│   ├── main.py                  # Entry point — runs the Telegram bot
-│   ├── bot_handlers.py          # Command and message handlers
-│   ├── auto_weather.py          # Automatic weather notifications (e.g., scheduled)
+├── bot/                    # Core logic of the Telegram bot
+│   ├── __init__.py         # Marks the folder as a Python package
+│   ├── main.py             # Entry point — runs the Telegram bot
+│   ├── bot_handlers.py     # Command and message handlers
+│   ├── auto_weather.py     # Automatic weather notifications (e.g., scheduled)
 │
-├── utils/                       # Utility modules
-│   ├── __init__.py              # Marks the folder as a Python package
-│   ├── logger.py                # Bot activity logging
-│   ├── json_utils.py            # JSON handling (read/write, parsing)
-│   ├── weather.py               # Weather API integration (requests & data processing)
+├── utils/                  # Utility modules
+│   ├── __init__.py         # Marks the folder as a Python package
+│   ├── logger.py           # Bot activity logging
+│   ├── json_utils.py       # JSON handling (read/write, parsing)
+│   ├── weather.py          # Weather API integration (requests & data processing)
 │
-├── config/                      # Configuration and settings
-│   ├── __init__.py              # Marks the folder as a Python package
-│   └── config.py                # Bot token, API keys, parameters
+├── config/                 # Configuration and settings
+│   ├── __init__.py         # Marks the folder as a Python package
+│   └── config.py           # Bot token, API keys, parameters
 │
-├── requirements.txt             # Project dependencies (Python libraries)
-├── README.md                    # Project documentation
-├── LICENSE                      # Project license
-└── .gitignore                   # Git ignore rules (venv, logs, etc.)
+├── requirements.txt        # Project dependencies (Python libraries)
+├── README.md               # Project documentation
+├── LICENSE                 # Project license
+└── .gitignore              # Git ignore rules (venv, logs, etc.)
 ```
 
 ## ⚙️ Requirements
 
-- Python 3.8 or higher
+- [Python 3.8 or higher](https://www.python.org/)
 - Internet connection
-- A valid OpenWeather API Key
-- A valid Telegram Bot Token (from @BotFather)
-- Installed project dependencies (see `requirements.txt`)
+- A valid [**OpenWeather API Key**](https://home.openweathermap.org/api_keys)
+- A valid Telegram Bot Token (from [**@BotFather**](https://t.me/BotFather))
+- Installed project dependencies (see [**`requirements.txt`**](https://github.com/Ha1seZz/TelegramWeatherBot/blob/main/requirements.txt))
 
 
 
