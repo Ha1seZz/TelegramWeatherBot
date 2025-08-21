@@ -1,5 +1,5 @@
-from auto_weather import start_auto_weather
-from bot_handlers import bot
+from bot.auto_weather import start_auto_weather
+from bot.bot_handlers import bot
 
 
 if __name__ == "__main__":

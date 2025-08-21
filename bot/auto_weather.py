@@ -1,7 +1,7 @@
-from bot_handlers import bot, format_weather_message, get_weather
+from bot.bot_handlers import bot, format_weather_message, get_weather
 from apscheduler.schedulers.background import BackgroundScheduler
-from weather import fetch_weather
-from json_utils import read_json
+from utils.weather import fetch_weather
+from utils.json_utils import read_json
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
