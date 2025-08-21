@@ -4,7 +4,7 @@ from pathlib import Path
 import json
 
 
-LOGS_DIR = Path("telegram_weather_bot") / "logs"
+LOGS_DIR = Path("logs")
 
 # Часовой пояс Казахстана
 KZ_TZ = ZoneInfo("Asia/Aqtobe")

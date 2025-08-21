@@ -1,7 +1,7 @@
 from utils.json_utils import read_json, write_json
+from config.config import TELEGRAM_TOKEN
 from utils.weather import fetch_weather
 from utils.logger import log_message
-from config import TELEGRAM_TOKEN
 from telebot import types
 import telebot
 
