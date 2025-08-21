@@ -88,9 +88,16 @@ TelegramWeatherBot/
 ## 💡Examples
 
 <p align="center">
-  <img src="assets/demo.gif" alt="Demo" width="400" style="border-radius:10px;"/>
+  <img src="assets/demo.gif" alt="Weather Bot Demo"/>
   <br>
-  <b>📌 The bot shows the current weather, saves your city, and can automatically send daily updates.</b>
+  <b>📌 The bot shows the current weather, saves your city and automatically send daily updates.</b>
+  <br>
+
+  <b>🔧 Commands:</b>
+  /start - Start the bot
+  &lt;city&gt; - Get the weather for a city
+  /mycity - Your city for weather forecast delivery
+  /setcity &lt;city&gt; - Set / Change the city for weather forecast delivery
 </p>
 
 * * *
