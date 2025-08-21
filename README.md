@@ -72,6 +72,22 @@ TelegramWeatherBot/
     python -m pip install -U -r requirements.txt
     ```
 
+## 🚀Running the bot
+1. Change the current directory:
+
+    ```bash
+    cd TelegramWeatherBot
+    ```
+
+2. Start the bot:
+
+    ```bash
+    python -m bot.main
+    ```
+
+## 💡Examples
+...
+
 * * *
 
 ## 📃LICENSE
