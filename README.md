@@ -95,10 +95,10 @@ TelegramWeatherBot/
 
 <p align="center">
   <b>🛠 Commands:</b><br>
-  **/start** - Start the bot.<br>
-  **&lt;city&gt;** - Get the weather for a city.<br>
-  **/mycity** - Your city for weather forecast delivery.<br>
-  **/setcity &lt;city&gt;** - Set / Change the city for weather forecast delivery.<br>
+  <b>/start</b> - Start the bot.<br>
+  <b>&lt;city&gt;</b> - Get the weather for a city.<br>
+  <b>/mycity</b> - Your city for weather forecast delivery.<br>
+  <b>/setcity &lt;city&gt;</b> - Set / Change the city for weather forecast delivery.<br>
 </p>
 
 * * *
