@@ -44,13 +44,19 @@ TelegramWeatherBot/
 
 ## ⚙️ Requirements
 
-- [Python 3.8 or higher](https://www.python.org/)
+- [**Python 3.8 or higher**](https://www.python.org/)
 - Internet connection
 - A valid [**OpenWeather API Key**](https://home.openweathermap.org/api_keys)
 - A valid Telegram Bot Token (from [**@BotFather**](https://t.me/BotFather))
 - Installed project dependencies (see [**`requirements.txt`**](https://github.com/Ha1seZz/TelegramWeatherBot/blob/main/requirements.txt))
 
+## 💾Installation
+1. Clone the repository:
 
+    ```bash
+    git clone https://github.com/Ha1seZz/TelegramWeatherBot
+    cd TelegramWeatherBot
+    ```
 
 * * *
 
