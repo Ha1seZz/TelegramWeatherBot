@@ -86,7 +86,8 @@ TelegramWeatherBot/
     ```
 
 ## 💡Examples
-...
+
+![Telegram Bot Demo](assets/demo.gif)
 
 * * *
 
