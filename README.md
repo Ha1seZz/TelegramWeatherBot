@@ -17,7 +17,7 @@ All interactions are logged into JSON files.
 
 ## 📂Project Structure
 
-```sh
+```bash
 TelegramWeatherBot/
 │
 ├── bot/                    # Core logic of the Telegram bot
@@ -56,6 +56,20 @@ TelegramWeatherBot/
     ```bash
     git clone https://github.com/Ha1seZz/TelegramWeatherBot
     cd TelegramWeatherBot
+    ```
+
+2. Set Up Virtual Environment (Optional):
+
+   ```bash
+   python -m venv venv
+   source venv/bin/activate  # For Linux/Mac
+   venv\Scripts\activate   # For Windows
+   ```
+
+3. Install required dependencies:
+
+    ```bash
+    python -m pip install -U -r requirements.txt
     ```
 
 * * *
