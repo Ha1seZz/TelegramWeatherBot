@@ -36,9 +36,9 @@ def send_weather_auto():
 
         # Получаем готовую структуру с погодой
         weather = get_weather(data)
-        
+
         # Форматируем и отправляем сообщение пользователю
-        bot.send_message(chat_id, format_weather_message(city, weather), parse_mode="html")
+        bot.send_message(chat_id, format_weather_message(city, weather))
 
 
 def start_auto_weather():
