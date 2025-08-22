@@ -8,6 +8,8 @@ import telebot
 
 # Создаём объект бота
 bot = telebot.TeleBot(TELEGRAM_TOKEN)
+# parse_mode="HTML" - все сообщения поддерживают HTML-разметку
+
 
 @bot.message_handler(commands=['start'])
 def start(message):
@@ -17,10 +19,12 @@ def start(message):
     log_message(message)  # Логируем команду
     # Имя пользователя: сначала username, иначе first_name
     username = message.from_user.username or message.from_user.first_name
+
     # Отправляем приветственное сообщение
     bot.send_message(
         message.chat.id,
-        f"Привет @{username}!\nНапиши название города:"
+        f"👋 Привет <b>@{username}!</b>\n"
+        "Напиши название города:"
     )
 
 @bot.message_handler(commands=['setcity'])
@@ -70,8 +74,7 @@ def save_city(message):
     # Подтверждаем сохранение
     bot.send_message(
         message.chat.id,
-        f"✅ Город <b>{city.title()}</b> сохранён!",
-        parse_mode="html"
+        f"✅ Город <b>{city.title()}</b> сохранён!"
     )
 
 def stop_city_keyboard():
@@ -130,8 +133,7 @@ def mycity(message):
         # Если город найден — отправляем его пользователю
         bot.send_message(
             message.chat.id,
-            f"🏙 Ваш сохранённый город: <b>{city}</b>",
-            parse_mode="html"
+            f"🏙 Ваш сохранённый город: <b>{city}</b>"
         )
     else:
         # Если город не найден — просим сохранить его через /setcity
@@ -163,7 +165,7 @@ def send_weather(message):
     weather = get_weather(data)
 
     # Формируем и отправляем сообщение с результатом
-    bot.reply_to(message, format_weather_message(city, weather), parse_mode="html")
+    bot.reply_to(message, format_weather_message(city, weather))
 
 def get_weather(weather):
     """
