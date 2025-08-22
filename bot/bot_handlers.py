@@ -7,7 +7,7 @@ import telebot
 
 
 # Создаём объект бота
-bot = telebot.TeleBot(TELEGRAM_TOKEN)
+bot = telebot.TeleBot(TELEGRAM_TOKEN, parse_mode="HTML")
 # parse_mode="HTML" - все сообщения поддерживают HTML-разметку
 
 
