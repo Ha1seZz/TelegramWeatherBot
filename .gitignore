@@ -181,7 +181,7 @@ __marimo__/
 user_cities.json
 
 # Logs
-telegram_weather_bot/logs/
+TelegramWeatherBot/logs/
 logs/
 *.log
 
