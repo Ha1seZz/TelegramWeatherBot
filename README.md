@@ -7,13 +7,12 @@ The code was written for educational purposes
 The **WeatherBot** is a Python-based Telegram bot that provides weather forecasts and daily weather updates for a chosen city using the OpenWeather API.
 All interactions are logged into JSON files.
 
-**Libraries used:** pyTelegramBotAPI, requests, schedule, zoneinfo, pathlib, json
+**Libraries used:** pyTelegramBotAPI, APScheduler, requests, zoneinfo, pathlib, json
 
 ## 🔧️Functions
 - Getting the weather forecast on request.
 - Automatic distribution of the weather forecast **for a given city**.
 - Logging of all user messages in JSON format (by day and by user).
-
 
 ## 📂Project Structure
 
