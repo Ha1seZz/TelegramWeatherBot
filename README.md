@@ -10,9 +10,9 @@ All interactions are logged into JSON files.
 **Libraries used:** pyTelegramBotAPI, APScheduler, requests, zoneinfo, pathlib, json
 
 ## 🔧️Functions
-- Getting the weather forecast on request.
-- Automatic distribution of the weather forecast **for a given city**.
-- Logging of all user messages in JSON format (by day and by user).
+- 📍 Getting the weather forecast on request.
+- 🏙 Automatic distribution of the weather forecast **for a given city**.
+- 📝 Logging of all user messages in JSON format (by day and by user).
 
 ## 📂Project Structure
 
