@@ -1,4 +1,4 @@
-from bot.auto_weather import start_auto_weather
+from bot.scheduler import start_auto_weather
 from bot.bot_handlers import bot
 
 

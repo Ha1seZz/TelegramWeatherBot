@@ -1,7 +1,7 @@
-from bot.bot_handlers import bot, format_weather_message, get_weather
 from apscheduler.schedulers.background import BackgroundScheduler
+from bot.dependencies import user_cities_json
 from utils.weather import fetch_weather
-from utils.json_utils import read_json
+from bot.bot_handlers import bot
 from datetime import datetime
 from zoneinfo import ZoneInfo
 
@@ -24,7 +24,7 @@ def send_weather_auto():
     allowed_hours = {7, 10, 13, 16, 19, 22}
 
     # Загружаем сохранённых пользователей и их города
-    users = read_json("user_cities.json") or {}
+    users = user_cities_json.read_json() or {}
 
     for chat_id, city in users.items():
         data = fetch_weather(city)  # Запрашиваем погоду для города
@@ -35,10 +35,10 @@ def send_weather_auto():
             continue
 
         # Получаем готовую структуру с погодой
-        weather = get_weather(data)
+        weather = weather.get_weather(data)
 
         # Форматируем и отправляем сообщение пользователю
-        bot.send_message(chat_id, format_weather_message(city, weather))
+        bot.send_message(chat_id, weather.format_weather_message(city, weather))
 
 
 def start_auto_weather():
