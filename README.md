@@ -21,9 +21,17 @@ TelegramWeatherBot/
 │
 ├── bot/                    # Core logic of the Telegram bot
 │   ├── __init__.py         # Marks the folder as a Python package
-│   ├── main.py             # Entry point — runs the Telegram bot
 │   ├── bot_handlers.py     # Command and message handlers
-│   ├── auto_weather.py     # Automatic weather notifications (e.g., scheduled)
+│   ├── dependencies.py     # Provides dependencies (utils, config, etc.)
+│   ├── scheduler.py        # Automatic weather notifications (e.g., scheduled)
+│   ├── middlewares.py      # Middlewares (auto-logging)
+│   ├── keyboards.py        # Inline & reply keyboards
+│   │
+│   ├── handlers/           # Command & message handlers
+│   │   ├── __init__.py
+│   │   ├── start.py        # /start command
+│   │   ├── city.py         # Change/select city
+│   └── └── weather.py      # Weather command (/weather)
 │
 ├── utils/                  # Utility modules
 │   ├── __init__.py         # Marks the folder as a Python package
@@ -36,6 +44,7 @@ TelegramWeatherBot/
 │   └── config.py           # Bot token, API keys, parameters
 │
 ├── requirements.txt        # Project dependencies (Python libraries)
+├── main.py                 # Entry point - runs the Telegram bot
 ├── README.md               # Project documentation
 ├── LICENSE                 # Project license
 └── .gitignore              # Git ignore rules (venv, logs, etc.)
