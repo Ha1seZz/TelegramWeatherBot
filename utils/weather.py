@@ -32,3 +32,8 @@ def fetch_weather(city: str) -> dict | None:
     # Любая ошибка сети или сервера - возвращаем None
     except requests.RequestException:
         return None
+
+def is_valid_weather_response(data: dict) -> bool:
+    """Проверяет, что ответ от API погоды корректный"""
+    # Если ошибка или код != 200 (город не существует)
+    return bool(data) and data.get("cod") == 200

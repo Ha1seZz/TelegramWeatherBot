@@ -1,6 +1,6 @@
+from utils.weather import fetch_weather, is_valid_weather_response
 from bot.dependencies import user_cities_json
 from bot.keyboards import stop_city_keyboard
-from utils.weather import fetch_weather
 
 
 def register_city_handlers(bot):
@@ -27,7 +27,7 @@ def register_city_handlers(bot):
 
         # Проверка города через API
         data = fetch_weather(city)  # Получаем погоду (если город существует)
-        if not data or data.get("cod") != 200:  # Если ошибка или код != 200 (город не существует)
+        if not is_valid_weather_response(data):  # Если ответ неверный (город не найден, ошибка сервера)
             # Отправляем сообщение с кнопкой "🛑 Остановить"
             sent = bot.send_message(
                 message.chat.id,

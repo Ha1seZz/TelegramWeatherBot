@@ -1,4 +1,4 @@
-from utils.weather import fetch_weather
+from utils.weather import fetch_weather, is_valid_weather_response
 
 
 def register_weather_handler(bot):
@@ -15,7 +15,7 @@ def register_weather_handler(bot):
         data = fetch_weather(city)
 
         # Если данных нет или API вернул ошибку - выводим сообщение об ошибке
-        if not data or data.get("cod") != 200:
+        if not is_valid_weather_response(data):  # Если ответ неверный (город не найден, ошибка сервера)
             bot.reply_to(message, "❌ Город указан неверно или сервер недоступен!")
             return
 

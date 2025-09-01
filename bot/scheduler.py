@@ -1,6 +1,6 @@
+from utils.weather import fetch_weather, is_valid_weather_response
 from apscheduler.schedulers.background import BackgroundScheduler
 from bot.dependencies import user_cities_json
-from utils.weather import fetch_weather
 from bot.bot_handlers import bot
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -30,7 +30,7 @@ def send_weather_auto():
         data = fetch_weather(city)  # Запрашиваем погоду для города
 
         # Если API вернул ошибку — сообщаем пользователю
-        if not data or data.get("cod") != 200:
+        if not is_valid_weather_response(data):  # Если ответ неверный (город не найден, ошибка сервера)
             bot.send_message(chat_id, f"❌ Не удалось получить погоду для {city}")
             continue
 
