@@ -1,6 +1,7 @@
 from utils.weather import fetch_weather, is_valid_weather_response
 from apscheduler.schedulers.background import BackgroundScheduler
 from bot.dependencies import user_cities_json
+from abc import ABC, abstractmethod
 from bot.bot_handlers import bot
 from datetime import datetime
 from zoneinfo import ZoneInfo
@@ -9,36 +10,88 @@ from zoneinfo import ZoneInfo
 # Часовой пояс Казахстана
 KZ_TZ = ZoneInfo("Asia/Almaty")
 
+
+class Observer(ABC):
+    """
+    Базовый интерфейс наблюдателя.
+    """
+    @abstractmethod
+    def update(self, chat_id: int, city: str, weather_data: dict):
+        pass
+
+
+class WeatherBotNotifier(Observer):
+    """
+    Наблюдатель: отвечает за отправку погоды пользователям через Telegram-бота.
+    """
+    def update(self, chat_id: int, city: str, weather_data: dict):
+        # Если API вернул ошибку — сообщаем пользователю
+        if not is_valid_weather_response(weather_data):  # Если ответ неверный (город не найден, ошибка сервера)
+            bot.send_message(chat_id, f"❌ Не удалось получить погоду для {city}")
+            return
+
+        from utils import weather
+        weather_obj = weather.get_weather(weather_data)  # Получаем готовую структуру с погодой
+
+        # Готовим сообщение и отправляем его пользователю
+        message = weather_obj.format_weather_message(city, weather_obj)
+        bot.send_message(chat_id, message)
+
+
+class LoggerObserver(Observer):
+    """
+    Наблюдатель: просто логирует факт рассылки погоды.
+    (Может использоваться для отладки или админ-уведомлений.)
+    """
+    def update(self, chat_id: int, city: str, weather_data: dict):
+        now = datetime.now(KZ_TZ)
+        print(f"[LOG] {now.strftime('%Y-%m-%d %H:%M:%S')} | Chat: {chat_id}, City: {city}")
+
+
+class WeatherSubject:
+    """
+    Издатель (Subject):
+    - хранит список наблюдателей (подписчиков)
+    - уведомляет их при каждом обновлении данных
+    """
+    def __init__(self):
+        self._observers: list[Observer] = []  # Список подписчиков
+
+    def subscribe(self, observer: Observer):
+        """Подписать нового наблюдателя"""
+        self._observers.append(observer)
+
+    def unsubscribe(self, observer: Observer):
+        """Отписать наблюдателя"""
+        self._observers.remove(observer)
+
+    def notify(self, chat_id: int, city: str, data: dict):
+        """Рассылает обновление всем подписчикам"""
+        for observer in self._observers:
+            observer.update(chat_id, city, data)
+
+
 # Планировщик
 scheduler = BackgroundScheduler(timezone=KZ_TZ)
+
+subject = WeatherSubject()  # Создаём Subject (издатель)
+subject.subscribe(WeatherBotNotifier())  # Подписчик: Бот
+subject.subscribe(LoggerObserver())  # Подписчик: Логгер
 
 
 def send_weather_auto():
     """
-    Отправляет сохранённым пользователям погоду в определённые часы.
+    Получает погоду и оповещает наблюдателей.
     """
     now = datetime.now(KZ_TZ)  # Получаем текущее время по КЗ
     print(f"[AUTO WEATHER] Запуск задачи — {now.strftime('%Y-%m-%d %H:%M:%S')}")
-
-    # Список часов, в которые бот будет отправлять погоду
-    allowed_hours = {7, 10, 13, 16, 19, 22}
 
     # Загружаем сохранённых пользователей и их города
     users = user_cities_json.read_json() or {}
 
     for chat_id, city in users.items():
         data = fetch_weather(city)  # Запрашиваем погоду для города
-
-        # Если API вернул ошибку — сообщаем пользователю
-        if not is_valid_weather_response(data):  # Если ответ неверный (город не найден, ошибка сервера)
-            bot.send_message(chat_id, f"❌ Не удалось получить погоду для {city}")
-            continue
-
-        # Получаем готовую структуру с погодой
-        weather = weather.get_weather(data)
-
-        # Форматируем и отправляем сообщение пользователю
-        bot.send_message(chat_id, weather.format_weather_message(city, weather))
+        subject.notify(chat_id, city, data)
 
 
 def start_auto_weather():
