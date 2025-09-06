@@ -30,11 +30,11 @@ class WeatherBotNotifier(Observer):
             bot.send_message(chat_id, f"❌ Не удалось получить погоду для {city}")
             return
 
-        from utils import weather
-        weather_obj = weather.get_weather(weather_data)  # Получаем готовую структуру с погодой
+        from handlers.weather import get_weather, format_weather_message
+        weather_obj = get_weather(weather_data)  # Получаем готовую структуру с погодой
 
         # Готовим сообщение и отправляем его пользователю
-        message = weather_obj.format_weather_message(city, weather_obj)
+        message = format_weather_message(city, weather_obj)
         bot.send_message(chat_id, message)
 
 
